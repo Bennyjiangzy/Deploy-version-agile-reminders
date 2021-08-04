@@ -1,0 +1,20 @@
+<div class="container">
+    <h4>Thank you for your support</h4>
+    <h4>Your login email: <%=Useremail %></h4>
+    <h4 id="page_div">Jump to the login page after 5 seconds</h4>
+    
+    <script language="javascript">
+        var num =4;
+        window.setTimeout("doUpdate()",1000);
+        function doUpdate(){
+            if(num !=0){
+                document.getElementById('page_div').innerHTML ='Jump to the login page after '+num+' seconds' ;
+                num --;
+                window.setTimeout("doUpdate()",1000);
+            }else{
+                num =4;
+                window.location = "/login";
+            }
+        }
+    </script>
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row show-grid">
+    <h1 class="page-header">Edit</h1>&nbsp&nbsp
+    <img style="border-radius:50%" width="50" height="50" src=<%="https://ui-avatars.com/api/?background=random&name="+Username%>>
+  </div>
+  <form action=<%= "/reminder/update/" + reminderItem.id %> method="POST">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" name="title" class="form-control" id="titleInput" value="<%= reminderItem.title %>">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Description" name="description"><%= reminderItem.description %></textarea>
+    </div>
+
+    <div class="form-group"> 
+      <label for="date">Remind me by</label>
+      <input type="datetime-local" class="form-control" id="dateInput" name="date" value="<%= reminderItem.date %>">
+    </div>
+
+    <div class="form-group">
+      <label for="completed">Completed</label>
+      <div class="radio">
+        <label>
+          <% if (reminderItem.completed == true) { %>
+            <input type="radio" name="completed" id="true" value="true" checked="checked">
+          <% } else { %>
+            <input type="radio" name="completed" id="true" value="true">
+          <% } %>
+          True
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <% if (reminderItem.completed == false) { %>
+            <input type="radio" name="completed" id="false" value="false" checked="checked">
+          <% } else { %>
+            <input type="radio" name="completed" id="false" value="false">
+          <% } %>
+          False
+        </label>
+      </div>
+    <button type="submit" class="btn btn-warning">Update</button>
+  </form>
+</div>

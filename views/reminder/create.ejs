@@ -1,0 +1,22 @@
+<div class="container">
+  <form action="/reminder" method="POST">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="titleInput" placeholder="Title" name="title">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Description" name="description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="tag">Tag</label>
+      <textarea class="form-control" id="tagInput" rows="3" placeholder="Type one whole word as your tag" name="tag" required></textarea>
+    </div>
+      <div class="form-group">
+      <label for="date">Remind me by</label>
+      <input type="datetime-local" class="form-control" id="dateInput" name="date" required>
+
+    </div>
+    <button type="submit" class="btn btn-warning">Submit</button>
+  </form>
+</div>

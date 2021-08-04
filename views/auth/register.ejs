@@ -1,0 +1,37 @@
+<div class="container">
+  <form action="/register" method="POST">
+    <div class="form-group">
+      <h3 class="text-center">New Account</h3>
+      <label for="name">Username</label>
+      <input type="name" class="form-control" name="username" id="Username" placeholder="Username" value='<%=name%>' required>
+    </div>
+    <div class="form-group">
+      <label for="Email1">Email address</label>
+      <input type="email" class="form-control" id="Email1" name="email" aria-describedby="emailHelp" placeholder="Enter email" value='<%=email%>' required>
+      <%if (Accounterror === true) {%>
+      <small id="emailHelp" class="text-danger">Email existed please try another one.</small>
+      <%}%>
+      
+    </div>
+    <div class="form-group">
+      <label for="Password">Password</label>
+      <input type="password" class="form-control" name="password" aria-describedby="passwordHelp" id="Password" placeholder="Password" value='<%=password%>' required>
+      <%if (Passworderror === true) {%>
+      <small id="passwordHelp" class="text-danger" >password must be at least 7 characters long, including numbers, letters, and symbols.</small>
+      <%}%>
+    </div>
+
+    <div class="form-group">
+      <label for="Password">
+      Password Confirmation</label>
+      <input type="password" class="form-control" name="password2" aria-describedby="passwordHelp" id="Password" placeholder="Password Confirmation"required>
+      <%if (Passworderror2 === true) {%>
+      <small id="passwordHelp" class="text-danger" >Two passwords are different. Please type again.</small>
+      <%}%>
+    </div>
+    <button type="submit" class="btn btn-warning">Submit</button>
+  </form>
+</div>
+
+
+

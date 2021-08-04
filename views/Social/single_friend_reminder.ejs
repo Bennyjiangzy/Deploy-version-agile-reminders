@@ -1,0 +1,35 @@
+<div class="container">
+    <h1 class="page-header">Reminders</h1>
+  
+      <ul class="list-group">
+        <li class="list-group-item">
+          <h3><strong><%= reminderItem.title %>: </strong></h3>
+          <h4><%= reminderItem.description %></h4>
+          <% for (i = 0; i < reminderItem.tag.length; i++) { %>
+            <span class="badge badge-warning"><%=reminderItem.tag[i]%></span>
+             <% } %>
+          <h4>Completed:
+            <% if (reminderItem.completed == true) { %>
+              <span class="label label-success">True</span>
+            <% } else if (reminderItem.completed == false) { %>
+              <span class="label label-danger">False</span>
+            <% } %>
+          </h4>
+          <h4>Remind Me by: <%= reminderItem.date.replace("T", " ") %></h4>
+        </li>
+      </ul>
+      
+
+      <div class="card my-2">
+        <div class="card-body">
+          <h3><strong>Subtask</strong></h3>
+          <ul style="list-style-type:none;" class="list-group">
+            <% for (let i = 0; i < reminderItem.subtask.length;  i++ ) { %>
+              <li><strong><%=reminderItem.subtask[i]%></strong>
+              </li>
+            <% } %>
+            </ul>
+        </div>
+      </div>
+  </div>
+  

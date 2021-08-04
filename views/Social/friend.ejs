@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row show-grid">
+        <h1 class="page-header">Friends</h1>&nbsp&nbsp
+        <img style="border-radius:50%" width="50" height="50" src=<%="https://ui-avatars.com/api/?background=random&name="+Username%>>
+      </div>
+    <form action="/friend" method="POST">
+        <div class="card my-2">
+        <div class="card-body">
+            <% if (error == 1) { %> 
+                <script>alert('The email not exist');</script>
+            <%}else if (error == 2) { %> 
+                <script>alert('You cannot add yourself');</script>
+            <%}else if (error == 3) { %> 
+                <script>alert('You cannot repeatly add one account');</script>
+            <% } %>
+
+            <ul class="list-group" id="search" >
+
+            <% for (let i = 0; i < alluser.length;  i++ ) { %>
+                <li  style="display:none" ><%=alluser[i].email%></li>
+            <% } %>
+            </ul>
+            <input onkeyup='<%=listener%>' type="text" name="useremail" class="form-control" id="userInput" placeholder="Type email">
+            <script>
+
+                const filter=()=>{
+                    const filtercontent=document.querySelector("#userInput").value
+                    console.log(typeof(filtercontent))
+                    const allaccounts=document.getElementById("search").getElementsByTagName('li')
+                    for( i=0; i<allaccounts.length; i++){
+                        letters=allaccounts[i].innerHTML
+                        if(letters.indexOf(filtercontent)>-1){
+                            allaccounts[i].style.display=''
+                        }else{
+                            allaccounts[i].style.display='none'
+                        }
+                        if(filtercontent==""){
+                            allaccounts[i].style.display='none'
+                        }
+
+
+                    }
+                    
+
+
+                }
+            </script>
+            <button type="submit" class="btn btn-primary  my-2">
+                Add friend
+            </button>
+            <h5 class="card-title">Your friends</h5>
+            
+            <ul class="list-group">
+
+                <% for (let i = 0; i < account.length;  i++ ) { %>
+                    <li class="list-group-item">
+                        <img style="border-radius:50%" width="50" height="50"src=<%="https://ui-avatars.com/api/?background=random&name="+account[i].name%>>
+                        Name:&nbsp;&nbsp;<%=account[i].name%>&nbsp;&nbsp;&nbsp;&nbsp;Email:&nbsp;&nbsp;<%=account[i].email%>
+                    
+                    <a class="pull-right" href=<%= "/friend/" + account[i].id%>>View</a>
+                    </li>
+                    
+                <% } %>
+            </ul>   
+          </div>
+        </div>
+
+
+    </form>
+    <a href="/logout" class="btn btn-secondary">Logout</a>
+    
+</div>

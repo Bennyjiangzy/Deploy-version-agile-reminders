@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row show-grid">
+    <h1 class="page-header"><%=friendname.toUpperCase()%>'s Reminders</h1>&nbsp&nbsp
+    <img style="border-radius:50%" width="50" height="50" src=<%="https://ui-avatars.com/api/?background=random&name="+friendname%>>
+  </div>
+  
+  <ul class="list-group">
+    <% reminders.forEach(function (reminderItem) { %>
+      <li class="list-group-item" style="padding-bottom: 0.25rem;">
+        <strong><%= reminderItem.title %>: </strong>
+        || <i class="badge badge-warning"><%= reminderItem.tag %></i>
+        || Completed:
+        <% if (reminderItem.completed == true) { %>
+          <span class="badge badge-success">True</span>
+        <% } else if (reminderItem.completed == false) { %>
+          <span class="badge badge-danger">False</span>
+        <% } %>
+
+        || Remind By:
+        <%= reminderItem.date.replace("T", " ") %>
+        
+
+        
+        <a class="pull-right" href=<%= "/friend/" + friendid + "/" + reminderItem.id %>>View</a>
+
+        
+      </li>
+      <!-- <button type="submit" class="btn btn-warning" onclick=<&=addReminder %>>Add to Your List</button> -->
+    <% }) %>
+    <form action="/reminders" method="POST">
+      <input type="hidden" name="reminderName" value=<%= friendname %> >
+      <input type="hidden" name="fid" value=<%= friendid %> >
+      <br>
+      <button type="submit" class="btn btn-outline-success">Add to Your List</button>
+    </form>
+  </ul>
+  <!-- <a href="/logout" class="btn btn-secondary">Logout</a> -->
+  <!-- You should add copy buttion here -->
+  <!-- You may also need to stop user copy twice and give them error message -->
+  </div>

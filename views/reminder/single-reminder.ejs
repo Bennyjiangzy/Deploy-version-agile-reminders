@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row show-grid">
+    <h1 class="page-header">Reminders</h1>&nbsp&nbsp
+    <img style="border-radius:50%" width="50" height="50" src=<%="https://ui-avatars.com/api/?background=random&name="+Username%>>
+  </div>
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h3><strong><%= reminderItem.title %>: </strong></h3>
+        <h4><%= reminderItem.description %></h4>
+        <h4>Completed:
+          <% if (reminderItem.completed == true) { %>
+            <span class="label label-success">True</span>
+          <% } else if (reminderItem.completed == false) { %>
+            <span class="label label-danger">False</span>
+          <% } %>
+        </h4>
+        <h4>Remind Me by: <%= reminderItem.date.replace("T", " ") %></h4>
+
+        <a class="btn btn-warning" href=<%= "/reminder/" + reminderItem.id + "/edit" %>>Edit</a>
+
+        <form class="deleteForm "method="POST" action=<%= "/reminder/delete/" + reminderItem.id %>>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        
+
+      </li>
+    </ul>
+
+
+    <div class="card my-2">
+      <div class="card-body">
+        <h3><strong>Subtask</strong></h3>
+        <form class="deleteForm "method="POST" action=<%= "/reminder/" + reminderItem.id + "/editsub" %>>
+          <ul class="list-group d-flex bd-highlight mb-3">
+          <% for (let i = 0; i < reminderItem.subtask.length;  i++ ) { %>
+            <li class="list-group-item d-flex justify-content-between align-items-start"><strong><%=reminderItem.subtask[i]%></strong>
+            <button type="submit" class="btn btn-primary btn-sm btn-danger" name="buttonsub" style="margin-left: 0.25rem" value=<%= i %>>Delete</button>
+            </li>
+
+          <% } %>
+          </ul>
+          <% if (Show == true) { %>
+          <button type="submit" class="btn btn-primary  my-2" name="buttonsub" value="add">add</button>
+          <% } else {%>
+            <input type="text" class="form-control" id="titleInput" placeholder="Type your subtask" name="subtask" required>
+            <button type="submit" class="btn btn-warning" name="buttonsub" value="Submit" style="margin-top: 0.25rem">Submit</button>
+          <% } %>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="card my-3">
+      <div class="card-body">
+        <h3><strong>Tags</strong></h3>
+        <form class="deleteForm "method="POST" action=<%= "/reminder/" + reminderItem.id + "/tag" %>>
+          <ul class="list-inline">
+          <% for (let i = 0; i < reminderItem.tag.length;  i++ ) { %>
+            <li class="list-inline-item"><span class="badge badge-warning"><%=reminderItem.tag[i]%></span>
+              <button type="submit" class="close text-danger" aria-label="Close" name="buttonsub" value=<%= i %>
+                <span aria-hidden="true">&times;</span>
+              </button>
+              </li>
+          <% } %>
+          </ul>
+          <% if (Tag_show == true) { %>
+          <button type="submit" class="btn btn-primary  my-3" name="buttonsub" value="add">add</button>
+          <% } else {%>
+            <input type="text" class="form-control" id="titleInput" placeholder="Type your tag" name="tag" required>
+            <button type="submit" class="btn btn-warning" name="buttonsub" value="Submit">Submit</button>
+          <% } %>
+        </form>
+      </div>
+    </div>
+</div>
+
+

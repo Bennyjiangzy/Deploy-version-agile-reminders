@@ -99,7 +99,7 @@ app.get("/logout", (req,res)=>{
   res.redirect("/login")
 })
 
-app.listen(3001, function () {
+app.listen(process.env.PORT || 3001, function () {
   console.log(
     "Server running. Visit: localhost:3001/reminders in your browser 🚀"
   );

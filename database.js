@@ -50,12 +50,24 @@
 //     },
 // ]
 
-const mongourl = 'mongodb://localhost:27017'
 const MongoClient = require('mongodb').MongoClient
+const mongourl = "mongodb+srv://bennyjiang:qaz121121@cluster0.iobde.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+
+
+// const { MongoClient } = require('mongodb');
+// const uri = "mongodb+srv://bennyjiang:<password>@cluster0.iobde.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   perform actions on the collection object
+//   client.close();
+// });
+
 
 const userModel = {
 allaccount:async ()=>{
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -76,7 +88,7 @@ allaccount:async ()=>{
 findOne: async (email) => {
     
     const user = {"email":email}
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -106,7 +118,7 @@ findOne: async (email) => {
 
 findByIdaccount: async (id) => {
     const user = {"no":id}
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -131,7 +143,7 @@ findByIdaccount: async (id) => {
 
 findById: async (id) => {
     const user = {"no":id}
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -157,7 +169,7 @@ findById: async (id) => {
 findreminders:async (userid,remidnerid)=>{
     const user = {"no":userid}
     
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -181,7 +193,7 @@ findreminders:async (userid,remidnerid)=>{
 
 createnewremidners: async (userid,data)=>{
     const user = {"no":userid}
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -213,7 +225,7 @@ createnewremidners: async (userid,data)=>{
     },
 
 updatereminders:async (userid,remidnerid,data)=>{
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -246,7 +258,7 @@ updatereminders:async (userid,remidnerid,data)=>{
 
 deletereminders:async(userid,remidnerid)=>{
     const user = {"no":userid}
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -275,7 +287,7 @@ deletereminders:async(userid,remidnerid)=>{
     },
 addsubtask:async (userid,remidnerid,data)=>{
     const user = {"no":userid}
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -304,7 +316,7 @@ addsubtask:async (userid,remidnerid,data)=>{
 
 deletesubtask:async (userid,remidnerid,deletesubtaskindex)=>{
     const user = {"no":userid}
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -335,7 +347,7 @@ deletesubtask:async (userid,remidnerid,deletesubtaskindex)=>{
 
     addtag:async (userid,remidnerid,data)=>{
         const user = {"no":userid}
-        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
         if (!client){
             return;
         }
@@ -365,7 +377,7 @@ deletesubtask:async (userid,remidnerid,deletesubtaskindex)=>{
     
     deletetag:async (userid,remidnerid,deletesubtaskindex)=>{
         const user = {"no":userid}
-        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
         if (!client){
             return;
         }
@@ -397,7 +409,7 @@ deletesubtask:async (userid,remidnerid,deletesubtaskindex)=>{
 addfriend:async(currentuserid,searchuserid)=>{
         const cuserid = {"no":currentuserid}
         const suserid = {"no":searchuserid}
-        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
         if (!client){
             return;
         }
@@ -431,7 +443,7 @@ addfriend:async(currentuserid,searchuserid)=>{
 
 checkfriend:async (currentuserid,searchuserid)=>{
         const cuserid = {"no":currentuserid}
-        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
         if (!client){
             return;
         }
@@ -458,7 +470,7 @@ checkfriend:async (currentuserid,searchuserid)=>{
 
 addfriendreminders: async(currentuserid,searchuserid,searchusername)=>{
     const cuserid = {"no":currentuserid}
-        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
         if (!client){
             return;
         }
@@ -485,7 +497,7 @@ addfriendreminders: async(currentuserid,searchuserid,searchusername)=>{
     },
 getfriendreminders: async(uid)=>{
         const cuserid = {"no":uid}
-        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+        const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
         if (!client){
             return;
         }
@@ -522,7 +534,7 @@ getfriendreminders: async(uid)=>{
 
 checkeamilexistence: async (useremail)=>{
     const cuser = {"email":useremail}
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }
@@ -556,7 +568,7 @@ checkpassword: (userpassword)=>{
 },
 
 registernewaccount:async (email,password,name)=>{
-    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true}).catch(err =>{console.log(err)})
+    const client = await MongoClient.connect(mongourl,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err =>{console.log(err)})
     if (!client){
         return;
     }

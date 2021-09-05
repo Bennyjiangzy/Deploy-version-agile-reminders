@@ -3,9 +3,21 @@
 
 Welcome to our reminders project
 
-For start our project, you need to type npm install in the terminal and go to URL localhost:3001
+Here is the depolyed website https://happy-reminder.herokuapp.com/
 
-You can find account email and account password in the database.js
+You can find our test account and password in testaccount.js
+
+Or you can register a new account by yourself
+
+## Introduction
+
+This app provides a place for you to record any important events
+
+You can use this app to manage your schedule
+
+We also provide a friend function that you can make friends here and view their's reminders as well
+
+*The article below tells you how to use our app*
 
 ## Basic function(edit update delete and create)
 To edit a reminder, click the View button that is to the right of each individual reminder. 

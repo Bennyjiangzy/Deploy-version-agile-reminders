@@ -9,6 +9,9 @@ You can find our test account and password in testaccount.js
 
 Or you can register a new account by yourself
 
+*Team members: Benny, Agnes, Steves, Shaniah*
+*Our workflow is in the breakdownOfWork.MD*
+
 ## Introduction
 
 This app provides a place for you to record any important events
